@@ -5,15 +5,27 @@ using UnityEngine;
 public class Movimientojugador : MonoBehaviour
 {
     public float velocidad = 10f;
-    Rigidbody rb;
+    public float velocidadMaxima = 80f;
+    public float velocidadMinima = 30f;
+
+
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = transform.forward * velocidad;
+        transform.position += transform.forward * velocidad * Time.deltaTime;
+        if (Input.GetKey(KeyCode.W) && (velocidad < velocidadMaxima))
+        {
+            velocidad += 0.1f;
+        }
+
+        if (Input.GetKey(KeyCode.S) && (velocidad > velocidadMinima))
+        {
+            velocidad -= 0.1f;
+        }
     }
 }
