@@ -28,4 +28,6 @@ public class Movimientojugador : MonoBehaviour
             velocidad -= 0.1f;
         }
     }
+
+
 }
