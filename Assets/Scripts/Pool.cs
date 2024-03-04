@@ -47,8 +47,7 @@ public class Pool : MonoBehaviour
         {
             casco = pool.Pop();
             casco.SetActive(true);
-            casco.transform.position = parentTransform.position;
-            casco.transform.rotation = parentTransform.rotation * Quaternion.Euler(90f, 0f, 0f);
+            
         }
         return casco;
     }

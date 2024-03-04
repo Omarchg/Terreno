@@ -24,7 +24,9 @@ public class explosion : MonoBehaviour
         
     }
 
-    void explotar()
+
+
+    public void explotar()
     {
         GameObject Explosion = Instantiate(particulas, transform.position, transform.rotation);
         Explosion.SetActive(true);

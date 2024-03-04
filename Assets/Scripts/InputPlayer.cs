@@ -1,33 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
     public Pool pool;
-    [SerializeField]
-    private float bulletspeed = 10f;
+    public Transform spawnTransform; // Transform de spawn para las balas
+    [SerializeField] private float bulletSpeed = 10f;
+
     
-
-    void Awake()
-    {
-        pool = Pool.instance;
-    }
-
     void Update()
     {
         if (Input.GetButtonUp("Fire1"))
         {
-            
-            GameObject casco = pool.ObtenerObjeto();
-            if (casco != null)
+            FireBullet();
+        }
+    }
+
+    void FireBullet()
+    {
+        GameObject bullet = pool.ObtenerObjeto();
+        if (bullet != null)
+        {
+            Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
+            if (bulletRB != null)
             {
-                Rigidbody cascoRB = casco.GetComponent<Rigidbody>();
-                if (cascoRB != null)
-                {
-                    
-                    cascoRB.velocity = pool.parentTransform.forward * bulletspeed;
-                }
+                bullet.transform.position = spawnTransform.position;
+                bullet.transform.rotation = spawnTransform.rotation * Quaternion.Euler(90f, 0f, 0f);
+                bulletRB.velocity = spawnTransform.forward * bulletSpeed;
             }
         }
     }
