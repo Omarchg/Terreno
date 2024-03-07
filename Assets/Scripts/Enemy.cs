@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     
     
-    public explosion doexplosion;
+    public Explosion doexplosion;
     void Start()
     {
         

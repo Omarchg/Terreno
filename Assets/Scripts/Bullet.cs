@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeBehaviour : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     private float time = 0.0f;
 
@@ -16,6 +16,13 @@ public class CubeBehaviour : MonoBehaviour
             Pool.instance.DevolverObjeto(gameObject);
             time = 0.0f;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        gameObject.SetActive(false);
+        Pool.instance.DevolverObjeto(gameObject);
+        time = 0.0f;
     }
 
     void OnEnable()
